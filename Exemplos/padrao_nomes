@@ -1,0 +1,12 @@
+##Sempre em ingles
+
+Migration
+CreateTableNome
+AlterTableNomeInsertColumnX
+AlterTableNomeDropColumnX
+
+Mode
+NomeOutroNome
+
+Controller
+NomeController
