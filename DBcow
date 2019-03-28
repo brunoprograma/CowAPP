@@ -1,32 +1,32 @@
 CREATE SCHEMA dbcow;
 
-CREATE TABLE dbcow.pessoas
-(
-  ID       INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  NOME     VARCHAR(255) NOT NULL,
-  EMAIL    VARCHAR(255) NOT NULL,
-  TELEFONE VARCHAR(50),
-  CELULAR  VARCHAR(50),
-  UF       VARCHAR(2),
-  CIDADE   VARCHAR(50),
-  PERFIL   INT -- (1 - LOCATARIO/ 2 - LOCADOR / 3 - AMBOS)
-);
+    CREATE TABLE dbcow.pessoas
+    (
+      ID       INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
+      NOME     VARCHAR(255) NOT NULL,
+      EMAIL    VARCHAR(255) NOT NULL,
+      TELEFONE VARCHAR(50),
+      CELULAR  VARCHAR(50),
+      UF       VARCHAR(2),
+      CIDADE   VARCHAR(50),
+      PERFIL   INT -- (1 - LOCATARIO/ 2 - LOCADOR / 3 - AMBOS)
+    );
 
-CREATE TABLE dbcow.tipo
-(
-  ID        INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  DESCRICAO VARCHAR(255)
-);
+    CREATE TABLE dbcow.tipo
+    (
+      ID        INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+      DESCRICAO VARCHAR(255)
+    );
 
-CREATE TABLE dbcow.horarios
-(
-  ID            INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  HORA_INICIAL  TIME,
-  HORA_FINAL    TIME,
-  ID_DIA_SEMANA INT NOT NULL, -- será enviado pela aplicação o id referente ao dia da semana 1- domingo, 2 - segunda...
-  IDAMBIENTE    INT NOT NULL,
-  CONSTRAINT fk_horarios_ambientes FOREIGN KEY (IDAMBIENTE) REFERENCES dbcow.ambientes (ID)
-);
+    CREATE TABLE dbcow.horarios
+    (
+      ID            INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+      HORA_INICIAL  TIME,
+      HORA_FINAL    TIME,
+      ID_DIA_SEMANA INT NOT NULL, -- será enviado pela aplicação o id referente ao dia da semana 1- domingo, 2 - segunda...
+      IDAMBIENTE    INT NOT NULL,
+      CONSTRAINT fk_horarios_ambientes FOREIGN KEY (IDAMBIENTE) REFERENCES dbcow.ambientes (ID)
+    );
 
 CREATE TABLE dbcow.ambientes
 (
