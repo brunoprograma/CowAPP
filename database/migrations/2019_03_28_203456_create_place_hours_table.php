@@ -15,9 +15,9 @@ class CreatePlaceHoursTable extends Migration
     {
         Schema::create('place_hours', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('id_place');
-            $table->timestamp('initial');
-            $table->timestamp('finale');
+            $table->unsignedBigInteger('id_place');
+            $table->dateTime('initial');
+            $table->dateTime('finale');
             $table->integer('day_week');
             $table->float('value_hour');
             $table->timestamps();

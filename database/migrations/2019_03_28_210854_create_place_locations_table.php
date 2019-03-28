@@ -15,10 +15,10 @@ class CreatePlaceLocationsTable extends Migration
     {
         Schema::create('place_locations', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('id_place');
-            $table->unsignedInteger('id_user');
-            $table->timestamp('initial');
-            $table->timestamp('finale');
+            $table->unsignedBigInteger('id_place');
+            $table->unsignedBigInteger('id_user');
+            $table->dateTime('initial');
+            $table->dateTime('finale');
             $table->float('value');
             $table->timestamps();
             $table->foreign('id_place')->references('id')->on('places');
