@@ -16,17 +16,18 @@ class CreatePlacesTable extends Migration
         Schema::create('places', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedInteger('id_place_type');
+            $table->unsignedInteger('id_user');
             $table->string('name');
             $table->string('description');
             $table->string('city');
             $table->string('uf');
-            $table->integer('day_week');
-            $table->integer('day_week');
-            $table->float('latitude');
-            $table->float('longitude');
-            $table->integer('size');
+            $table->float('latitude')->nullable();
+            $table->float('longitude')->nullable();
+            $table->integer('size')->nullable();
             $table->integer('capacity');
             $table->timestamps();
+            $table->foreign('id_place_type')->references('id')->on('place_types');
+            $table->foreign('id_user')->references('id')->on('users');
         });
     }
 

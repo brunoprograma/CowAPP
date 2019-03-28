@@ -25,38 +25,37 @@ CREATE SCHEMA dbcow;
       HORA_FINAL    TIME,
       ID_DIA_SEMANA INT NOT NULL, -- será enviado pela aplicação o id referente ao dia da semana 1- domingo, 2 - segunda...
       IDAMBIENTE    INT NOT NULL,
+      VALOR_HORA    FLOAT
       CONSTRAINT fk_horarios_ambientes FOREIGN KEY (IDAMBIENTE) REFERENCES dbcow.ambientes (ID)
     );
 
-CREATE TABLE dbcow.ambientes
-(
-  ID         INT NOT NULL AUTO_INCREMENT,
-  NOME       VARCHAR(255),
-  DESCRICAO  VARCHAR(255),
-  TIPO       INT,
-  CIDADE     VARCHAR(20),
-  UF         VARCHAR(2),
-  LATITUDE   FLOAT,
-  LONGITUDE  FLOAT,
-  TAMANHO    INT,
-  CAPACIDADE INT,
-  IDTIPO     INT NOT NULL,
-  IDPESSOA   INT NOT NULL,
-  CONSTRAINT pk_ambiente PRIMARY KEY (ID),
-  CONSTRAINT fk_ambiente_tipo FOREIGN KEY (IDTIPO) REFERENCES dbcow.tipo (ID),
-  CONSTRAINT fk_ambiente_pessoas FOREIGN KEY (IDPESSOA) REFERENCES dbcow.pessoas (ID)
-);
+    CREATE TABLE dbcow.ambientes
+    (
+      ID         INT NOT NULL AUTO_INCREMENT,
+      NOME       VARCHAR(255),
+      DESCRICAO  VARCHAR(255),
+      CIDADE     VARCHAR(20),
+      UF         VARCHAR(2),
+      LATITUDE   FLOAT,
+      LONGITUDE  FLOAT,
+      TAMANHO    INT,
+      CAPACIDADE INT,
+      IDTIPO     INT NOT NULL,
+      IDPESSOA   INT NOT NULL,
+      CONSTRAINT pk_ambiente PRIMARY KEY (ID),
+      CONSTRAINT fk_ambiente_tipo FOREIGN KEY (IDTIPO) REFERENCES dbcow.tipo (ID),
+      CONSTRAINT fk_ambiente_pessoas FOREIGN KEY (IDPESSOA) REFERENCES dbcow.pessoas (ID)
+    );
 
-CREATE TABLE dbcow.locacao
-(
-  ID           INT NOT NULL AUTO_INCREMENT,
-  DATA_ENTRADA DATETIME,
-  DATA_SAIDA   DATETIME,
-  VALOR        FLOAT,
-  IDPESSOA     INT NOT NULL,
-  IDAMBIENTE   INT NOT NULL,
-  CONSTRAINT pk_locacao PRIMARY KEY (ID),
-  CONSTRAINT fk_locacao_pessoas FOREIGN KEY (IDPESSOA) REFERENCES dbcow.pessoas (ID),
-  CONSTRAINT fk_locacao_ambiente FOREIGN KEY (IDAMBIENTE) REFERENCES dbcow.ambientes (ID)
-);
-
+    CREATE TABLE dbcow.locacao
+    (
+      ID           INT NOT NULL AUTO_INCREMENT,
+      DATA_ENTRADA DATETIME,
+      DATA_SAIDA   DATETIME,
+      VALOR        FLOAT,
+      IDPESSOA     INT NOT NULL,
+      IDAMBIENTE   INT NOT NULL,
+      CONSTRAINT pk_locacao PRIMARY KEY (ID),
+      CONSTRAINT fk_locacao_pessoas FOREIGN KEY (IDPESSOA) REFERENCES dbcow.pessoas (ID),
+      CONSTRAINT fk_locacao_ambiente FOREIGN KEY (IDAMBIENTE) REFERENCES dbcow.ambientes (ID)
+    );

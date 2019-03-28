@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePlaceHoursTable extends Migration
+class CreatePlaceLocationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,16 @@ class CreatePlaceHoursTable extends Migration
      */
     public function up()
     {
-        Schema::create('place_hours', function (Blueprint $table) {
+        Schema::create('place_locations', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedInteger('id_place');
+            $table->unsignedInteger('id_user');
             $table->timestamp('initial');
             $table->timestamp('finale');
-            $table->integer('day_week');
-            $table->float('value_hour');
+            $table->float('value');
             $table->timestamps();
             $table->foreign('id_place')->references('id')->on('places');
+            $table->foreign('id_user')->references('id')->on('users');
         });
     }
 
@@ -32,6 +33,6 @@ class CreatePlaceHoursTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('place_hours');
+        Schema::dropIfExists('place_locations');
     }
 }
