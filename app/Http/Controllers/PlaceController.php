@@ -14,7 +14,9 @@ class PlaceController extends Controller
      */
     public function index()
     {
-        //
+        $places = Place::get();
+
+        return response()->json($places);
     }
 
     /**
@@ -44,9 +46,13 @@ class PlaceController extends Controller
      * @param  \App\Place  $place
      * @return \Illuminate\Http\Response
      */
-    public function show(Place $place)
+    public function show(Request $request)
     {
-        //
+        $data = $request->all();
+        
+        $place = Place::where('id', $data['id'])->get();
+
+        return response()->json($places);
     }
 
     /**
@@ -80,6 +86,11 @@ class PlaceController extends Controller
      */
     public function destroy(Place $place)
     {
-        //
+        $data = $request->all();
+        
+        $place = Place::where('id', $data['id'])->get();
+        $place = delete();
+
+        return response('', 204);
     }
 }
