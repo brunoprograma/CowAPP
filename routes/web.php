@@ -18,4 +18,4 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('places/', 'PlaceController@index')->name('place.list');
+Route::resource('places/', 'PlaceController');
