@@ -56,7 +56,6 @@ class RegisterController extends Controller
             'cell_phone' => ['string', 'max:255'],
             'city' => ['string', 'max:255'],
             'uf' => ['string', 'max:255'],
-            'profile' => ['integrer'],
         ]);
     }
 
